@@ -34,7 +34,7 @@ public class NavigatesTo {
         try{
             slideoverAccount.closeAccountTabButton.click(new Locator.ClickOptions().setTimeout(1000));
 //            customFunctions.keepClicking(slideoverAccount.closeAccountTabButton, topbarOptions.siteLogo);
-        }catch(Exception _){
+        }catch(Exception e){
 
         }
     }
