@@ -25,8 +25,8 @@ jobs:
         with:
           distribution: '17'
 
-      - name: Maven setup
-        uses: s4u/setup-maven-actions@v1.7.0
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-actions@v3.0.0
         with:
           checkout-fetch-depth: 0
           java-version: 17
