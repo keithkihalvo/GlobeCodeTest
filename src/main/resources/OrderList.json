@@ -1,0 +1,32 @@
+{
+  "item1": {
+    "title": "Leightweight Running Jacket",
+    "color": "Grey",
+    "size": "M",
+    "quantity": 1
+  },
+  "item2": {
+    "title": "Black Gym Pants",
+    "color": "Black",
+    "size": "L",
+    "quantity": 1
+  },
+  "item3": {
+    "title": "Sports Bra Low Support",
+    "color": "Pink",
+    "size": "M",
+    "quantity": 2
+  },
+  "item4": {
+    "title": "Leather Charm Bracelet",
+    "color": "",
+    "size": "",
+    "quantity": 1
+  },
+  "item5": {
+    "title": "Gold Bracelet",
+    "color": "",
+    "size": "",
+    "quantity": 3
+  }
+}

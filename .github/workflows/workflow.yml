@@ -1,0 +1,50 @@
+name: workflow.yml
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+  push:
+    branches:
+      - 'main'
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Get JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: '17'
+
+      - name: Maven setup
+        uses: s4u/setup-maven-actions@v1.7.0
+        with:
+          checkout-fetch-depth: 0
+          java-version: 17
+          java-distribution: temurin
+          maven-version: 3.9.9
+
+      - name: Get Playwright
+        run: npx playwright install-deps
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
+          path: '~/.m2'
+          restore-keys:   |
+            ${{runner.os}}-maven
+
+      - name: Run Tests
+        run: mvn verify
+
+
