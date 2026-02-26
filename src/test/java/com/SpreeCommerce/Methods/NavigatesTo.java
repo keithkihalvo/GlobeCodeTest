@@ -7,8 +7,6 @@ import com.SpreeCommerce.PageLocators.SharedElements.SlideoverAccount;
 import com.SpreeCommerce.PageLocators.SharedElements.TopbarOptions;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
-import org.junit.jupiter.api.BeforeEach;
 
 public class NavigatesTo {
 

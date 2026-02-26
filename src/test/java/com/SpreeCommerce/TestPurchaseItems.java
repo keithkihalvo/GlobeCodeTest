@@ -6,11 +6,16 @@ import com.SpreeCommerce.Methods.Shopping;
 import com.SpreeCommerce.PageLocators.*;
 import com.SpreeCommerce.PageLocators.SharedElements.SlideoverAccount;
 import com.SpreeCommerce.PageLocators.SharedElements.TopbarOptions;
-import com.microsoft.playwright.*;
-import org.junit.jupiter.api.*;
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static com.SpreeCommerce.Methods.AccountDetails.*;
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 
 public class TestPurchaseItems {
 
@@ -18,10 +23,6 @@ public class TestPurchaseItems {
     Browser browser;
     Page page;
     String spreeCommerceHomePageLink = "https://demo.spreecommerce.org/";
-    String spreeCommerceSignInPageLink = "https://demo.spreecommerce.org/user/sign_in";
-    private static final String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyz1234567890";
-    static String username;
-    static String password;
     HomePage homePage;
     TopbarOptions topbarOptions;
     ToastMessage toastMessage;
@@ -40,7 +41,6 @@ public class TestPurchaseItems {
         browser = playwright.chromium()
                 .launch(new BrowserType
                         .LaunchOptions()
-//                        .setSlowMo(1000)
                         .setHeadless(false));
         page = browser.newPage();
         generateNewAccount();

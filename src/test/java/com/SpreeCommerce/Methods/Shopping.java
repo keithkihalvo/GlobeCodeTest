@@ -6,12 +6,10 @@ import com.SpreeCommerce.PageLocators.ProductsPage;
 import com.SpreeCommerce.PageLocators.SharedElements.TopbarOptions;
 import com.SpreeCommerce.PageLocators.SlideoverCart;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.Test;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -146,12 +144,11 @@ public class Shopping {
         checkoutPage.cityTextField.fill("Taguig");
         checkoutPage.zipCodeTextField.fill("1635");
         customFunctions.keepClicking(checkoutPage.saveAndContinueButton,checkoutPage.premiumDeliveryOption);
-        checkoutPage.premiumDeliveryOption.check();
+        checkoutPage.standardDeliveryOption.check();
     }
 
     public void FillOutPaymentMethod() throws InterruptedException {
         customFunctions.keepClicking(checkoutPage.saveAndContinueButton,checkoutPage.paymentHeader);
-        Thread.sleep(5000);
         checkoutPage.cardNumberTextfield.fill("4242 4242 4242 4242");
         checkoutPage.expirationDateTextfield.fill("12 / 30");
         checkoutPage.securityCodeTextfield.fill("123");

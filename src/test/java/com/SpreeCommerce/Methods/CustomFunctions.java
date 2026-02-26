@@ -4,12 +4,6 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.assertions.LocatorAssertions;
 import com.microsoft.playwright.assertions.PlaywrightAssertions;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
-import com.microsoft.playwright.Locator;
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import java.util.function.Consumer;
-
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class CustomFunctions {
     private final Page page;
@@ -31,22 +25,22 @@ public class CustomFunctions {
                 expectedlocatorafter.waitFor(new Locator.WaitForOptions().setTimeout(3000));
                 PlaywrightAssertions.assertThat(expectedlocatorafter).isVisible(new LocatorAssertions.IsVisibleOptions().setTimeout(3000));
                 success = true; // Operation succeeded, exit loop
-//                System.out.println("Element '"+locatorforclick+"' is clicked correctly!");
-//                System.out.println("Element '"+expectedlocatorafter+"' is available!");
+                System.out.println("Element '"+locatorforclick+"' is clicked correctly!");
+                System.out.println("Element '"+expectedlocatorafter+"' is available!");
                 break;
             } catch (Exception e) {
                 attempt++;
-//                System.out.println("Expected Element '" +expectedlocatorafter+ "' not found!");
+                System.out.println("Expected Element '" +expectedlocatorafter+ "' not found!");
                 if (attempt < MAX_RETRIES) {
-//                    System.out.println("Retrying...");
+                    System.out.println("Retrying...");
                     try {
                         Thread.sleep(1500); // Wait for 1.5 seconds
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
                     }
                 } else {
-//                    System.out.println("Maximum retries reached. Aborting.");
-//                    System.out.println(e.getMessage());
+                    System.out.println("Maximum retries reached. Aborting.");
+                    System.out.println(e.getMessage());
                     Thread.currentThread().interrupt();
                 }
             }
@@ -55,7 +49,7 @@ public class CustomFunctions {
 
     public boolean IsElementPresent(Locator expectedlocatorafter){
         Boolean iselementpresent = false;
-        int MAX_RETRIES = 2;
+        int MAX_RETRIES = 3;
         int attempt = 0;
         while (attempt < MAX_RETRIES && !iselementpresent) {
             try {
@@ -71,7 +65,7 @@ public class CustomFunctions {
                 if (attempt < MAX_RETRIES) {
 //                    System.out.println("Retrying...");
                     try {
-                        Thread.sleep(500); // Wait for 1 second
+                        Thread.sleep(1000); // Wait for 1 second
                     } catch (InterruptedException ie) {
                         Thread.currentThread().interrupt();
                     }
